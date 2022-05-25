@@ -22,16 +22,15 @@ end)
 
 CreateThread(function()
     for k, v in pairs(Config.PianoLocation) do
-        exports['qbr-core']:createPrompt("qvr-piano:Piano"..k, vector3(v.SitPosition.x, v.SitPosition.y, v.SitPosition.z), Config.Sit, 'Piano', {
+        exports['qbr-core']:createPrompt("qvr-piano:Piano"..k, v.SitPosition, Config.Sit, 'Piano', {
             type = 'client',
             event = 'qvr-piano:PianoPlay',
             args = {v.SitPosition,v.SitHeading,v.Animation}
         })
-        exports['qbr-core']:createPrompt("qvr-piano:PianoRemove"..k, vector3(v.SitPosition.x, v.SitPosition.y, v.SitPosition.z), Config.GetUp, 'Get Up', {
+        exports['qbr-core']:createPrompt("qvr-piano:PianoRemove"..k, v.SitPosition, Config.GetUp, 'Get Up', {
             type = 'client',
             event = 'qvr-piano:PianoPause',
         })
-
     end
 end)
 
